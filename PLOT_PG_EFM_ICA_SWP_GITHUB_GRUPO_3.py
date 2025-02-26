@@ -13,7 +13,7 @@ import gc
 nombre_usuario = os.getlogin()
 
 # CARPETA DONDE SE GUARDA EL PLOT PARA SUBIR A LA WEB
-RUTA_GUARDADO = f'C:/Users/{nombre_usuario}/OneDrive/LAST_PLOT_EFM' 
+RUTA_GUARDADO = "./"  # Guardar en el mismo directorio del repositorio
 
 # DEFINIR RESOLUCION TEMPORAL Y SHOW DEL PLOT 
 RT = "60"
@@ -127,7 +127,8 @@ ax.yaxis.set_minor_locator(ticker.AutoMinorLocator(4)) # Ticks menores entre los
 ax.legend(loc='best')
 
 # OUTPUT
-plt.savefig(os.path.join(RUTA_GUARDADO, 'PG_ICA_SWP_GRUPO_3.jpg'), dpi=300, bbox_inches='tight')
+plt.savefig("PG_ICA_SWP_GRUPO_3.jpg", dpi=300, bbox_inches='tight')
+
 
 if SHOW_FIGURE:
     plt.show()
