@@ -9,9 +9,6 @@ import time
 import gc
 
 #======================================================================================
-# Obtener el nombre de usuario local del sistema
-nombre_usuario = os.getlogin()
-
 # CARPETA DONDE SE GUARDA EL PLOT PARA SUBIR A LA WEB
 RUTA_GUARDADO = "./"  # Guardar en el mismo directorio del repositorio
 
