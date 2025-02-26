@@ -31,6 +31,11 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Subiendo imagen generada automáticamente" || touch FORZAR_CAMBIO && git add FORZAR_CAMBIO && git commit -m "Forzando commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/rr2021/swp_scripts.git HEAD:main
+          # 🔹 Forzar que Git siempre considere la imagen como cambiada
+          git add --force PG_ICA_SWP_GRUPO_3.jpg
+          
+          # 🔹 Intentar hacer commit solo si hay cambios
+          git commit -m "Forzando actualización de imagen $(date)" || echo "No hay cambios para commitear"
+          
+          # 🔹 Hacer push de los cambios
+          git push origin main
