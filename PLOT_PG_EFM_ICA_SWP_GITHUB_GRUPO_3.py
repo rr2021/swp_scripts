@@ -72,17 +72,17 @@ df.set_index('DATETIME', inplace=True)
 
 #======================================================================================
 # RESAMPLE Y PROCESAMIENTO DE DATOS
-df2 = df.resample(f"{RT}S").mean().ffill()
+df = df.resample(f"{RT}s").mean().ffill()
 
 # Último valor de PG
-ultimo_valor = round(df2['PG'].iloc[-1], 0).astype(int)
+ultimo_valor = round(df['PG'].iloc[-1], 0).astype(int)
 
 # Convertir 'H' a string y extraer valores en horas decimales
-H = df2.index.strftime('%H:%M:%S')
+H = df.index.strftime('%H:%M:%S')
 hourday = np.array([int(h[:2]) + int(h[3:5]) / 60 + int(h[6:]) / 3600 for h in H])
 
 # DEFINICION DE DATOS DE PG
-x, y = hourday, df2['PG']
+x, y = hourday, df['PG']
 
 # OBTENER HORA LOCAL Y HORA EJE
 now_utc = datetime.utcnow()
