@@ -3,7 +3,7 @@ name: Ejecutar script cada minuto
 on:
   schedule:
     - cron: "*/3 * * * *"  # Se ejecuta cada 3 minutos
-  workflow_dispatch:  # Permite ejecutar manualmente
+  #workflow_dispatch:  # Permite ejecutar manualmente
 
 jobs:
   run_script:
