@@ -2,7 +2,8 @@ name: Ejecutar script cada minuto
 
 on:
   schedule:
-    - cron: "*/3 * * * *"  # Se ejecuta cada minuto
+    - cron: "*/3 * * * *"  # Se ejecuta cada 3 minutos
+  workflow_dispatch:  # Permite ejecutar manualmente
 
 jobs:
   run_script:
@@ -22,7 +23,7 @@ jobs:
           pip install -r requirements.txt || echo "No hay dependencias que instalar"
 
       - name: Ejecutar script
-        run: PLOT_PG_EFM_ICA_SWP_GITHUB_GRUPO_3.py  # Reemplaza 'tu_script.py' con el nombre de tu archivo Python
+        run: python PLOT_PG_EFM_ICA_SWP_GITHUB_GRUPO_3.py
 
       - name: Commit y push si hay cambios
         run: |
