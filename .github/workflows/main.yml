@@ -26,9 +26,17 @@ jobs:
         run: python PLOT_PG_EFM_ICA_SWP_GITHUB_GRUPO_3.py
 
       - name: Commit y push si hay cambios
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/rr2021/swp_scripts.git
           git add .
           git commit -m "Subiendo imagen generada automáticamente" || echo "No hay cambios para commitear"
-          git push
+          git push origin main
+
+
+
+
+
