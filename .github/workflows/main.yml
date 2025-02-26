@@ -32,5 +32,5 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git add .
-          git commit -m "Subiendo imagen generada automáticamente" || echo "No hay cambios para commitear"
+          git commit -m "Subiendo imagen generada automáticamente" || touch FORZAR_CAMBIO && git add FORZAR_CAMBIO && git commit -m "Forzando commit"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/rr2021/swp_scripts.git HEAD:main
