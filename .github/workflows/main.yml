@@ -1,0 +1,33 @@
+name: Ejecutar script cada minuto
+
+on:
+  schedule:
+    - cron: "*/3 * * * *"  # Se ejecuta cada minuto
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt || echo "No hay dependencias que instalar"
+
+      - name: Ejecutar script
+        run: PLOT_PG_EFM_ICA_SWP_GITHUB_GRUPO_3.py  # Reemplaza 'tu_script.py' con el nombre de tu archivo Python
+
+      - name: Commit y push si hay cambios
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Subiendo imagen generada automáticamente" || echo "No hay cambios para commitear"
+          git push
